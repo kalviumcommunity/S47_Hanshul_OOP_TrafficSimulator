@@ -16,13 +16,24 @@ public class Car {
         System.out.println("A car has been created using the default constructor.");
     }
 
-    // Parameterized Constructor
+    // Constructor with name and speed
+    public Car(String name, int speed) {
+        this.name = name;
+        this.speed = speed;
+        this.fuel = 0;
+        this.track = "Unknown";
+        totalCars++;
+        System.out.println("A car has been created with name and speed.");
+    }
+
+    // Constructor with all parameters
     public Car(String name, int speed, int fuel, String track) {
         this.name = name;
         this.speed = speed;
         this.fuel = fuel;
         this.track = track;
         totalCars++;
+        System.out.println("A car has been created with all details.");
     }
 
     // Getter for name
@@ -30,6 +41,9 @@ public class Car {
         return name;
     }
 
+    // Display method overloading
+
+    // Default display
     public void displayInfo() {
         System.out.println("Car Name: " + name);
         System.out.println("Speed: " + speed + " km/h");
@@ -37,21 +51,22 @@ public class Car {
         System.out.println("Track Type: " + track);
     }
 
-    public static void displayTotalCars() {
-        System.out.println("Total Cars Participating in the Race: " + totalCars);
+    // Overloaded display with a title
+    public void displayInfo(String title) {
+        System.out.println("===== " + title + " =====");
+        displayInfo();
     }
 
-    public boolean move() {
-        if (fuel > 0) {
-            fuel--;
-            return true;
+    // Overloaded display to show only essential details
+    public void displayInfo(boolean showBasic) {
+        if (showBasic) {
+            System.out.println("Car: " + name + ", Speed: " + speed + " km/h");
         } else {
-            System.out.println(name + " is out of fuel and cannot continue.");
-            return false;
+            displayInfo();
         }
     }
 
-    public int getAdjustedSpeed() {
-        return speed;
+    public static void displayTotalCars() {
+        System.out.println("Total Cars Participating in the Race: " + totalCars);
     }
 }
