@@ -1,38 +1,36 @@
 public class Main {
     public static void main(String[] args) {
-        // Before creating cars
+        // Display total cars before creation
         System.out.println("Before creating cars:");
         Car.displayTotalCars();
 
-        // Creating cars using the parameterized constructor
-        Car car1 = new Car("SportsCar", 120, 10, "smooth");
-        Car car2 = new Car("Sedan", 100, 8, "city");
-        Car car3 = new Car("Truck", 80, 5, "offroad");
+        // Creating a regular car
+        Car regularCar = new Car("Sedan", 100, 10, "city");
 
-        // Creating a car using the default constructor
-        Car car4 = new Car(); // Default constructor is called
-        car4.setName("CompactCar");
-        car4.setSpeed(90);
-        car4.setFuel(7);
-        car4.setTrack("city");
+        // Creating an Electric Car (Single Inheritance)
+        ElectricCar tesla = new ElectricCar("Tesla Model S", 120, 80, "smooth");
 
-        // Display updated information
-        System.out.println("\nCars after creation:");
-        car1.displayInfo();
-        car2.displayInfo();
-        car3.displayInfo();
-        car4.displayInfo();
+        // Creating a Race Car (Hierarchical Inheritance)
+        RaceCar formula1 = new RaceCar("Formula 1", 200, 15, "smooth");
 
-        // Display total cars
-        System.out.println("\nTotal Cars Created:");
-        Car.displayTotalCars();
+        // Display car information
+        System.out.println("\nDisplaying Car Details:");
+        regularCar.displayInfo();
+        tesla.displayInfo();
+        formula1.displayInfo();
+
+        // Charging the electric car and enabling turbo for the race car
+        tesla.chargeBattery(15);
+        formula1.enableTurbo();
 
         // Starting the race
-        System.out.println("\nStarting a race:");
-        Race race = new Race(car1, car2, car4, 10);
+        System.out.println("\nStarting a Race:");
+        Race race = new Race(regularCar, tesla, formula1, 10);
         race.startRace();
 
-        // Display total races
+        // Display total cars and races
+        System.out.println("\nSummary:");
+        Car.displayTotalCars();
         Race.displayRaceCount();
     }
 }
