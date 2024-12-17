@@ -1,21 +1,28 @@
 public class Main {
     public static void main(String[] args) {
-        // Demonstrating Constructor Overloading
-        System.out.println("Creating cars using different constructors:");
+        // Creating Car objects
+        Car car1 = new Car("SportsCar", 150, 10, "smooth");
+        Car car2 = new Car("Truck", 90, 5, "offroad");
 
-        Car car1 = new Car(); // Default constructor
-        Car car2 = new Car("SportsCar", 150); // Constructor with name and speed
-        Car car3 = new Car("Truck", 90, 15, "offroad"); // Constructor with all details
+        // Displaying car details
+        System.out.println("Car Details:");
+        car1.displayInfo();
+        car2.displayInfo();
 
-        // Display total cars
-        System.out.println();
+        System.out.println("\nTesting the move function:");
+        car1.move();
+        car1.move(); // Call move twice to reduce fuel
+        car2.move();
+
+        // Displaying total cars
+        System.out.println("\nTotal Cars Created:");
         Car.displayTotalCars();
 
-        // Demonstrating Function Overloading
-        System.out.println("\nDemonstrating Method Overloading:");
+        //Using Vehicle reference for Car objects
+        Vehicle v1 = car1; 
+        Vehicle v2 = car2;
 
-        car1.displayInfo(); // Default display
-        car2.displayInfo("Car Details - SportsCar"); // Overloaded display with title
-        car3.displayInfo(true); // Overloaded display showing only basic details
+        v1.displayInfo(); // Calls overridden method in Car
+        v2.move();        // Calls overridden method in Car
     }
 }
