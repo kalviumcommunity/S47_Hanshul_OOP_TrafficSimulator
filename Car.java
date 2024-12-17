@@ -1,34 +1,29 @@
-public class Car extends Vehicle {
-    private static int totalCars = 0; // Static variable to track total cars created
-    private String track;
+public class Car {
+    private String name;
+    private int speed;
+    private int fuel;
 
     // Constructor
-    public Car(String name, int speed, int fuel, String track) {
-        super(name, speed, fuel); // Call to Vehicle constructor
-        this.track = track;
-        totalCars++;
+    public Car(String name, int speed, int fuel) {
+        this.name = name;
+        this.speed = speed;
+        this.fuel = fuel;
     }
 
-    // Implementing abstract method 'move' from Vehicle class
-    @Override
-    public void move() {
-        if (fuel > 0) {
-            fuel--;
-            System.out.println(name + " is moving at " + speed + " km/h. Remaining fuel: " + fuel + " liters.");
-        } else {
-            System.out.println(name + " is out of fuel and cannot move.");
-        }
+    // Getters and Setters
+    public String getName() {
+        return name;
     }
 
-    // Overriding the displayInfo method to add track information
-    @Override
-    public void displayInfo() {
-        super.displayInfo(); // Call to base class method
-        System.out.println("Track Type: " + track);
+    public int getSpeed() {
+        return speed;
     }
 
-    // Static method to display total cars
-    public static void displayTotalCars() {
-        System.out.println("Total Cars: " + totalCars);
+    public int getFuel() {
+        return fuel;
+    }
+
+    public void setFuel(int fuel) {
+        this.fuel = fuel;
     }
 }

@@ -1,28 +1,22 @@
 public class Main {
     public static void main(String[] args) {
-        // Creating Car objects
-        Car car1 = new Car("SportsCar", 150, 10, "smooth");
-        Car car2 = new Car("Truck", 90, 5, "offroad");
+        // Create car objects
+        Car car1 = new Car("SportsCar", 150, 10);
+        Car car2 = new Car("Truck", 90, 5);
 
-        // Displaying car details
-        System.out.println("Car Details:");
-        car1.displayInfo();
-        car2.displayInfo();
+        // Separate responsibilities
+        CarDisplay carDisplay = new CarDisplay();
+        CarMovement carMovement = new CarMovement();
 
-        System.out.println("\nTesting the move function:");
-        car1.move();
-        car1.move(); // Call move twice to reduce fuel
-        car2.move();
+        // Display car details
+        System.out.println("Displaying Car Details:");
+        carDisplay.displayCarInfo(car1);
+        carDisplay.displayCarInfo(car2);
 
-        // Displaying total cars
-        System.out.println("\nTotal Cars Created:");
-        Car.displayTotalCars();
-
-        //Using Vehicle reference for Car objects
-        Vehicle v1 = car1; 
-        Vehicle v2 = car2;
-
-        v1.displayInfo(); // Calls overridden method in Car
-        v2.move();        // Calls overridden method in Car
+        // Move the cars
+        System.out.println("\nTesting Car Movement:");
+        carMovement.move(car1);
+        carMovement.move(car1);
+        carMovement.move(car2);
     }
 }
