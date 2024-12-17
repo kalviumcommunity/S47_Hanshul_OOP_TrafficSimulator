@@ -1,14 +1,12 @@
 public class Car {
-    private String name;
-    private int speed;
-    private int fuel;
-    private TrackBehavior trackBehavior; // Track behavior strategy
+    protected String name;
+    protected int speed;
+    protected int fuel;
 
-    public Car(String name, int speed, int fuel, TrackBehavior trackBehavior) {
+    public Car(String name, int speed, int fuel) {
         this.name = name;
         this.speed = speed;
         this.fuel = fuel;
-        this.trackBehavior = trackBehavior;
     }
 
     public String getName() {
@@ -23,22 +21,19 @@ public class Car {
         return fuel;
     }
 
-    public void setFuel(int fuel) {
-        this.fuel = fuel;
-    }
-
-    public int getAdjustedSpeed() {
-        return trackBehavior.getAdjustedSpeed(speed, name);
-    }
-
     public boolean move() {
         if (fuel > 0) {
             fuel--;
+            System.out.println(name + " is moving at speed " + speed);
             return true;
         } else {
-            System.out.println(name + " is out of fuel and cannot move.");
+            System.out.println(name + " is out of fuel.");
             return false;
         }
+    }
+
+    public int getAdjustedSpeed() {
+        return speed; // Default behavior for general cars
     }
 
     public void displayInfo() {
